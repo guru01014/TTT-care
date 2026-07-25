@@ -1916,3 +1916,166 @@ font-size:15px;
 }
 
 }
+/* =========================
+   Global Responsive CSS
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    width:100%;
+    overflow-x:hidden;
+    font-family:Arial, sans-serif;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+    display:block;
+}
+
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+}
+
+.row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.col{
+    flex:1;
+    min-width:280px;
+}
+
+button{
+    cursor:pointer;
+}
+
+input,
+select,
+textarea,
+button{
+    width:100%;
+    max-width:100%;
+}
+
+/* =========================
+   Desktop
+========================= */
+
+@media (min-width:1024px){
+
+    .container{
+        width:90%;
+    }
+
+    h1{
+        font-size:48px;
+    }
+
+    h2{
+        font-size:36px;
+    }
+
+    p{
+        font-size:18px;
+    }
+
+}
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width:1023px){
+
+    .container{
+        width:95%;
+    }
+
+    .row{
+        flex-direction:column;
+    }
+
+    h1{
+        font-size:38px;
+    }
+
+    h2{
+        font-size:30px;
+    }
+
+    p{
+        font-size:17px;
+    }
+
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width:767px){
+
+    .container{
+        width:95%;
+    }
+
+    .row{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    h1{
+        font-size:30px;
+    }
+
+    h2{
+        font-size:24px;
+    }
+
+    p{
+        font-size:16px;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    nav{
+        flex-direction:column;
+    }
+
+}
+
+/* =========================
+   Extra Small Mobile
+========================= */
+
+@media (max-width:480px){
+
+    h1{
+        font-size:26px;
+    }
+
+    h2{
+        font-size:20px;
+    }
+
+    p{
+        font-size:15px;
+    }
+
+}
