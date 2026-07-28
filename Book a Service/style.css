@@ -1,0 +1,197 @@
+/* ==========================
+   RESPONSIVE SERVICES
+========================== */
+
+main{
+    width:100%;
+    padding:80px 20px;
+}
+
+#services{
+    width:100%;
+    max-width:1400px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+#services h2,
+#services>p{
+    grid-column:1/-1;
+    text-align:center;
+}
+
+/* ==========================
+   CARD
+========================== */
+
+.service-card{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.service-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.service-card p{
+    flex:1;
+}
+
+.service-card a{
+    display:block;
+    margin:25px;
+}
+
+.service-card button{
+    width:100%;
+}
+
+/* ==========================
+   LARGE DESKTOP
+========================== */
+
+@media (min-width:1400px){
+
+#services{
+grid-template-columns:repeat(3,1fr);
+}
+
+}
+
+/* ==========================
+   DESKTOP
+========================== */
+
+@media (max-width:1200px){
+
+#services{
+grid-template-columns:repeat(3,1fr);
+}
+
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width:992px){
+
+#services{
+grid-template-columns:repeat(2,1fr);
+}
+
+main{
+padding:60px 20px;
+}
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+#services{
+grid-template-columns:1fr;
+gap:25px;
+}
+
+main{
+padding:50px 15px;
+}
+
+#services h2{
+font-size:32px;
+}
+
+#services p{
+font-size:16px;
+}
+
+.service-card img{
+height:220px;
+}
+
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width:480px){
+
+main{
+padding:40px 12px;
+}
+
+#services{
+grid-template-columns:1fr;
+gap:20px;
+}
+
+#services h2{
+font-size:26px;
+}
+
+.service-card{
+border-radius:15px;
+}
+
+.service-card img{
+height:180px;
+}
+
+.service-card h3{
+font-size:22px;
+}
+
+.service-card p{
+font-size:15px;
+line-height:1.6;
+}
+
+.service-card a{
+margin:20px;
+}
+
+.service-card button{
+height:50px;
+font-size:16px;
+}
+
+}
+
+/* ==========================
+   EXTRA SMALL (320px)
+========================== */
+
+@media (max-width:320px){
+
+#services h2{
+font-size:22px;
+}
+
+.service-card img{
+height:160px;
+}
+
+.service-card h3{
+font-size:20px;
+}
+
+.service-card p{
+font-size:14px;
+}
+
+.service-card button{
+font-size:15px;
+}
+
+}
