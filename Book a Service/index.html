@@ -4,47 +4,361 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services - TTT CARE</title>
-  <link rel="stylesheet" href="./style.css">
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #090a0f; /* Pitch Black Background */
+      color: #f1f5f9;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Main Container */
+    #services {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .section-header p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+    }
+
+    /* Grid Layout */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    /* Dark Modern Card */
+    .service-card {
+      background: #12151e;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: #38bdf8;
+      box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.25);
+    }
+
+    /* Image Styling */
+    .card-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background-color: #1e293b;
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      filter: brightness(0.9);
+    }
+
+    .service-card:hover img {
+      transform: scale(1.08);
+      filter: brightness(1);
+    }
+
+    /* Neon Discount Tag */
+    .discount-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: linear-gradient(135deg, #ff0055, #ff5050);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 20px;
+      box-shadow: 0 0 12px rgba(255, 0, 85, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      z-index: 2;
+    }
+
+    /* Card Content Body */
+    .card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      flex-grow: 1;
+      margin-bottom: 24px;
+    }
+
+    /* Price Styling */
+    .price-container {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .discounted-price {
+      color: #38bdf8; /* Cyan Glow */
+      font-size: 1.8rem;
+      font-weight: 800;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+    }
+
+    .original-price {
+      text-decoration: line-through;
+      color: #64748b;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    /* Dark Glow Button */
+    .btn-buy {
+      width: 100%;
+      background: #38bdf8;
+      color: #090a0f;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-buy:hover {
+      background: #7dd3fc;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    }
+
+    .btn-buy:active {
+      transform: scale(0.98);
+    }
+
+    /* Modal / Popup Styling */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 100;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: #12151e;
+      border: 1px solid #334155;
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-box h3 {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .modal-box p {
+      color: #94a3b8;
+      margin-bottom: 20px;
+    }
+
+    .close-btn {
+      background: #ff0055;
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #64748b;
+      font-size: 0.9rem;
+      border-top: 1px solid #1e293b;
+      margin-top: 60px;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Main Content -->
+  <!-- Main Content -->
   <main>
     <section id="services">
-      <h2>Our Services</h2>
-      <p>Select a service to proceed with your purchase.</p>
+      <div class="section-header">
+        <h2>Our Services</h2>
+        <p>Select a service to proceed with your purchase.</p>
+      </div>
 
-      <!-- Service 1: Home Care -->
-      <article class="service-card">
-        <img src="./Pictute/1.png" alt="Home Care Service">
-        <h3>Home Care</h3>
-        <p>Comprehensive assistance at home including daily living support, medication management, and personal care.</p>
-        <a href="/buy/home-care"><button type="button">Buy Now</button></a>
-      </article>
+      <div class="services-grid">
+        <!-- Service 1: Home Care -->
+        <article class="service-card">
+          <div class="card-image-wrapper">
+            <span class="discount-tag">20% OFF</span>
+            <img src="./Pictute/1.png" alt="Home Care Service">
+          </div>
+          <div class="card-body">
+            <h3>Home Care</h3>
+            <p>Comprehensive assistance at home including daily living support, medication management, and personal care.</p>
+            
+            <div class="price-container">
+              <span class="discounted-price">$80</span>
+              <span class="original-price">$100</span>
+            </div>
 
-      <!-- Service 2: Emergency Support -->
-      <article class="service-card">
-        <img src="./Pictute/2.png" alt="Emergency Support Service">
-        <h3>Emergency Support</h3>
-        <p>24/7 urgent assistance and immediate caregiver response for critical situations requiring prompt support.</p>
-        <a href="/buy/emergency-support"><button type="button">Buy Now</button></a>
-      </article>
+            <button type="button" class="btn-buy" onclick="openModal('Home Care', '$80')">Buy Now</button>
+          </div>
+        </article>
 
-      <!-- Service 3: Elderly Care -->
-      <article class="service-card">
-        <img src="./Pictute/3.png" alt="Elderly Care Service">
-        <h3>Elderly Care</h3>
-        <p>Specialized compassionate care for seniors to ensure dignity, comfort, companionship, and health monitoring.</p>
-        <a href="/buy/elderly-care"><button type="button">Buy Now</button></a>
-      </article>
+        <!-- Service 2: Emergency Support -->
+        <article class="service-card">
+          <div class="card-image-wrapper">
+            <span class="discount-tag">15% OFF</span>
+            <img src="./Pictute/2.png" alt="Emergency Support Service">
+          </div>
+          <div class="card-body">
+            <h3>Emergency Support</h3>
+            <p>24/7 urgent assistance and immediate caregiver response for critical situations requiring prompt support.</p>
+            
+            <div class="price-container">
+              <span class="discounted-price">$127.50</span>
+              <span class="original-price">$150</span>
+            </div>
 
+            <button type="button" class="btn-buy" onclick="openModal('Emergency Support', '$127.50')">Buy Now</button>
+          </div>
+        </article>
+
+        <!-- Service 3: Elderly Care -->
+        <article class="service-card">
+          <div class="card-image-wrapper">
+            <span class="discount-tag">25% OFF</span>
+            <img src="./Pictute/3.png" alt="Elderly Care Service">
+          </div>
+          <div class="card-body">
+            <h3>Elderly Care</h3>
+            <p>Specialized compassionate care for seniors to ensure dignity, comfort, companionship, and health monitoring.</p>
+            
+            <div class="price-container">
+              <span class="discounted-price">$150</span>
+              <span class="original-price">$200</span>
+            </div>
+
+            <button type="button" class="btn-buy" onclick="openModal('Elderly Care', '$150')">Buy Now</button>
+          </div>
+        </article>
+      </div>
     </section>
   </main>
+
+  <!-- Checkout Modal Popup -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-box">
+      <h3 id="modalTitle">Proceeding to Checkout</h3>
+      <p id="modalDesc">You selected a service.</p>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
 
   <!-- Footer Section -->
   <footer>
     <p>&copy; 2026 TTT CARE. All rights reserved.</p>
   </footer>
+
+  <!-- JavaScript Functionality -->
+  <script>
+    function openModal(serviceName, price) {
+      const modal = document.getElementById('checkoutModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDesc = document.getElementById('modalDesc');
+
+      modalTitle.innerText = serviceName;
+      modalDesc.innerText = `Price: ${price} - Redirecting to checkout page...`;
+      
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.remove('active');
+    }
+
+    // Close modal when clicking outside the box
+    window.onclick = function(event) {
+      const modal = document.getElementById('checkoutModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+  </script>
 
 </body>
 </html>
