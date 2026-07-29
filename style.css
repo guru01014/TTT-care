@@ -2237,3 +2237,11 @@ button{
     }
 
 }
+/* Header Logo Styles */
+.logo img, 
+.top-header img {
+    height: 40px;          /* লোগোর হাইট প্রয়োজনমতো কম-বেশি করতে পারেন */
+    width: auto;           /* লোগোর অনুপাত ঠিক রাখবে */
+    object-fit: contain;
+    vertical-align: middle;
+}
