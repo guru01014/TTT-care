@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TTT Care - Book a Service</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+      padding: 3rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Section Header */
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: rgba(13, 148, 136, 0.15);
+      color: #2dd4bf;
+      border: 1px solid rgba(45, 212, 191, 0.3);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-header h2 span {
+      color: #2dd4bf;
+    }
+
+    .section-header p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* Caregivers Section */
+    .caregivers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 5rem;
+    }
+
+    .caregiver-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      text-align: center;
+    }
+
+    .caregiver-card:hover {
+      transform: translateY(-5px);
+      border-color: #2dd4bf;
+    }
+
+    .caregiver-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .caregiver-info {
+      padding: 1.5rem;
+    }
+
+    .caregiver-name {
+      font-size: 1.3rem;
+      color: #ffffff;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .caregiver-role {
+      color: #2dd4bf;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .caregiver-work {
+      color: #94a3b8;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .caregiver-exp {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: rgba(13, 148, 136, 0.2);
+      color: #2dd4bf;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Discount Promo Banner */
+    .promo-banner {
+      background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+      border-radius: 12px;
+      padding: 1.2rem 2rem;
+      text-align: center;
+      margin-bottom: 3.5rem;
+      color: #ffffff;
+      box-shadow: 0 10px 20px rgba(13, 148, 136, 0.2);
+    }
+
+    .promo-banner h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .promo-banner span {
+      background-color: #ffffff;
+      color: #0f766e;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-weight: 800;
+    }
+
+    /* Pricing Grid */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .pricing-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      border-color: #0d9488;
+    }
+
+    /* Featured/Popular Badge */
+    .pricing-card.popular {
+      border-color: #2dd4bf;
+      background: radial-gradient(circle at top, #1e293b 60%, rgba(13, 148, 136, 0.1) 100%);
+    }
+
+    .popular-tag {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background-color: #2dd4bf;
+      color: #0f172a;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      text-transform: uppercase;
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-desc {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Pricing Display */
+    .price-box {
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+    }
+
+    .original-price {
+      text-decoration: line-through;
+      color: #64748b;
+      font-size: 1.1rem;
+    }
+
+    .current-price {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #2dd4bf;
+    }
+
+    .price-unit {
+      color: #cbd5e1;
+      font-size: 0.9rem;
+    }
+
+    .discount-badge {
+      background-color: rgba(239, 68, 68, 0.2);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    /* Features List */
+    .features-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .features-list li {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .features-list li::before {
+      content: '✓';
+      color: #2dd4bf;
+      font-weight: bold;
+    }
+
+    /* Button */
+    .btn-book {
+      width: 100%;
+      background-color: #0d9488;
+      color: #ffffff;
+      border: none;
+      padding: 0.85rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-book:hover {
+      background-color: #0f766e;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid #0d9488;
+      color: #2dd4bf;
+    }
+
+    .btn-outline:hover {
+      background-color: #0d9488;
+      color: #ffffff;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section-header h2 {
+        font-size: 2rem;
+      }
+      
+      .promo-banner h3 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- 1. Caregivers Section (At the Top) -->
+    <header class="section-header">
+      <span class="badge">Our Team</span>
+      <h2>Meet Our <span>Certified Caregivers</span></h2>
+      <p>Compassionate, trained, and background-checked professionals ready to help your loved ones.</p>
+    </header>
+
+    <div class="caregivers-grid">
+      <!-- Caregiver 1 -->
+      <div class="caregiver-card">
+        <img src="./Picture/1.png" alt="Sarah Johnson" class="caregiver-img">
+        <div class="caregiver-info">
+          <h3 class="caregiver-name">Sarah Johnson</h3>
+          <div class="caregiver-role">Senior Nurse & Caregiver</div>
+          <p class="caregiver-work">Specializes in post-surgery recovery, daily health monitoring, and personalized medication management.</p>
+          <span class="caregiver-exp">5+ Years Experience</span>
+        </div>
+      </div>
+
+      <!-- Caregiver 2 -->
+      <div class="caregiver-card">
+        <img src="./Picture/2.png" alt="Michael Chen" class="caregiver-img">
+        <div class="caregiver-info">
+          <h3 class="caregiver-name">Michael Chen</h3>
+          <div class="caregiver-role">Elderly Care Specialist</div>
+          <p class="caregiver-work">Expert in mobility support, physical exercises, companionship, and doctor appointment assistance.</p>
+          <span class="caregiver-exp">7+ Years Experience</span>
+        </div>
+      </div>
+
+      <!-- Caregiver 3 -->
+      <div class="caregiver-card">
+        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&q=80&w=400" alt="Elena Rostova" class="caregiver-img">
+        <div class="caregiver-info">
+          <h3 class="caregiver-name">Elena Rostova</h3>
+          <div class="caregiver-role">Dementia & Live-In Caregiver</div>
+          <p class="caregiver-work">Focused on 24/7 live-in support, cognitive memory games, emergency response, and meal prep.</p>
+          <span class="caregiver-exp">6+ Years Experience</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Pricing & Booking Section -->
+    <header class="section-header">
+      <span class="badge">Book a Service</span>
+      <h2>Transparent Pricing & <span>Flexible Plans</span></h2>
+      <p>Choose the best care plan for your family with no hidden fees and limited-time special discounts.</p>
+    </header>
+
+    <!-- Discount Banner -->
+    <div class="promo-banner">
+      <h3>🎉 Limited Time Offer: Get <span>20% OFF</span> on Monthly Subscriptions! Code: <span>CARE20</span></h3>
+    </div>
+
+    <!-- Pricing Grid -->
+    <div class="pricing-grid">
+
+      <!-- Hourly Care -->
+      <div class="pricing-card">
+        <div>
+          <h3 class="card-title">Hourly Support</h3>
+          <p class="card-desc">Flexible care for short-term daily assistance and errands.</p>
+          
+          <div class="price-box">
+            <span class="original-price">$25</span>
+            <span class="current-price">$20</span>
+            <span class="price-unit">/ hour</span>
+            <span class="discount-badge">20% OFF</span>
+          </div>
+
+          <ul class="features-list">
+            <li>Minimum 2 hours per visit</li>
+            <li>Medication reminders</li>
+            <li>Light meal preparation</li>
+            <li>Companionship & walks</li>
+          </ul>
+        </div>
+        <button class="btn-book btn-outline" onclick="bookService('Hourly Support')">Book Hourly Care</button>
+      </div>
+
+      <!-- Daily / Full Day (Popular) -->
+      <div class="pricing-card popular">
+        <span class="popular-tag">Most Popular</span>
+        <div>
+          <h3 class="card-title">Full Day Care</h3>
+          <p class="card-desc">Dedicated 8-12 hour daily support for comprehensive assistance.</p>
+          
+          <div class="price-box">
+            <span class="original-price">$180</span>
+            <span class="current-price">$140</span>
+            <span class="price-unit">/ day</span>
+            <span class="discount-badge">22% OFF</span>
+          </div>
+
+          <ul class="features-list">
+            <li>Up to 12 hours of dedicated care</li>
+            <li>Personal hygiene & bathing</li>
+            <li>Vital signs tracking (BP/Sugar)</li>
+            <li>Doctor appointment escort</li>
+            <li>Full meal prep & light cleaning</li>
+          </ul>
+        </div>
+        <button class="btn-book" onclick="bookService('Full Day Care')">Book Day Care</button>
+      </div>
+
+      <!-- Live-in 24/7 Care -->
+      <div class="pricing-card">
+        <div>
+          <h3 class="card-title">24/7 Live-In Care</h3>
+          <p class="card-desc">Round-the-clock continuous care and maximum peace of mind.</p>
+          
+          <div class="price-box">
+            <span class="original-price">$1,200</span>
+            <span class="current-price">$950</span>
+            <span class="price-unit">/ week</span>
+            <span class="discount-badge">20% OFF</span>
+          </div>
+
+          <ul class="features-list">
+            <li>24/7 continuous presence</li>
+            <li>Specialized dementia & post-surgery care</li>
+            <li>Emergency assistance & Monitoring</li>
+            <li>Complete household support</li>
+            <li>Dedicated primary caregiver</li>
+          </ul>
+        </div>
+        <button class="btn-book btn-outline" onclick="bookService('24/7 Live-In Care')">Book Live-In Care</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function bookService(serviceName) {
+      alert(`Thank you for choosing ${serviceName}! Redirecting to checkout...`);
+    }
+  </script>
+
+</body>
+</html>
