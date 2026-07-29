@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Global Herald | TTT CARE Edition</title>
+  
+  <!-- Google Fonts for International Newspaper Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Global Reset & Base Styling */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #fcfcfc;
+      font-family: 'Roboto', sans-serif;
+      color: #111111;
+      line-height: 1.6;
+      padding: 20px 0;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+    }
+
+    a:hover {
+      color: #a00000;
+    }
+
+    /* Newspaper Header Bar */
+    .paper-header {
+      text-align: center;
+      border-bottom: 4px double #111111;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+
+    .top-utility {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #dddddd;
+      padding-bottom: 6px;
+      margin-bottom: 15px;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #555555;
+    }
+
+    .paper-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 58px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .paper-tagline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 15px;
+      color: #444444;
+    }
+
+    /* 3-Column Content Layout */
+    .news-grid {
+      display: grid;
+      grid-template-columns: 2.2fr 1.2fr 1fr;
+      gap: 30px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #111111;
+    }
+
+    /* Column 1: Main Lead Story */
+    .lead-column {
+      border-right: 1px solid #e0e0e0;
+      padding-right: 30px;
+    }
+
+    .category-tag {
+      color: #a00000;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .lead-story img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border-radius: 2px;
+    }
+
+    .lead-story h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 34px;
+      line-height: 1.15;
+      font-weight: 900;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+
+    .lead-story p {
+      font-size: 15px;
+      color: #222222;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .meta-info {
+      font-size: 12px;
+      color: #777777;
+      font-weight: 500;
+    }
+
+    /* Column 2: Secondary Headlines */
+    .secondary-column {
+      border-right: 1px solid #e0e0e0;
+      padding-right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .story-card {
+      border-bottom: 1px solid #eeeeee;
+      padding-bottom: 20px;
+    }
+
+    .story-card:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .story-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      margin-bottom: 10px;
+      border-radius: 2px;
+    }
+
+    .story-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .story-card p {
+      font-size: 13.5px;
+      color: #444444;
+      line-height: 1.55;
+    }
+
+    /* Column 3: Editorial & Live Briefs */
+    .sidebar-column {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+      border-bottom: 2px solid #111111;
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .opinion-item {
+      padding-bottom: 14px;
+      border-bottom: 1px dashed #dddddd;
+    }
+
+    .opinion-item:last-child {
+      border-bottom: none;
+    }
+
+    .author-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #a00000;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+      display: block;
+    }
+
+    .opinion-item h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 16px;
+      line-height: 1.35;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .opinion-item p {
+      font-size: 12.5px;
+      color: #555555;
+      line-height: 1.45;
+    }
+
+    /* Action Buttons */
+    .btn-action {
+      display: inline-block;
+      background-color: #111111;
+      color: #ffffff;
+      padding: 8px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .btn-action:hover {
+      background-color: #a00000;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 992px) {
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+      .lead-column, .secondary-column {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid #111111;
+        padding-bottom: 25px;
+      }
+      .paper-title {
+        font-size: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Top Header Bar -->
+    <header class="paper-header">
+      <div class="top-utility">
+        <span id="current-date">Wednesday, July 29, 2026</span>
+        <span>International Welfare & Health Edition</span>
+        <span>Global Network</span>
+      </div>
+      <h1 class="paper-title">The Global Herald</h1>
+      <p class="paper-tagline">Reporting on International Health Infrastructure, Senior Support & Welfare Innovations</p>
+    </header>
+
+    <!-- Content Section Layout -->
+    <main class="news-grid">
+      
+      <!-- Column 1: Main Detailed Lead Story -->
+      <article class="lead-column">
+        <div class="lead-story">
+          <span class="category-tag">Senior Health & Care</span>
+          <a href="#">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80" alt="TTT CARE Primary Assistance Initiative">
+          </a>
+          <h2><a href="#">TTT CARE Establishes Advanced Assistance Infrastructure for Elderly & Vulnerable Citizens</a></h2>
+          
+          <p>In response to growing demographic demands, <strong>TTT CARE</strong> has implemented an international framework designed to deliver compassionate healthcare support, emergency home visits, and localized community care directly to senior individuals in need. The initiative marks a major step forward in humanitarian support by combining real-time digital coordination with trained healthcare professionals on the ground.</p>
+          
+          <p>With an increasing population requiring specialized attention, TTT CARE's operational strategy focuses on restoring dignity, safety, and comfort for sick and elderly individuals. Through dedicated care teams, emergency response units, and daily companionship visits, the organization continues to bridge the critical gaps in modern social welfare infrastructure across multiple operational sectors.</p>
+          
+          <div class="meta-info">By TTT CARE Bureau • 6 Min Read • Healthcare Operations Desk</div>
+          <button class="btn-action" onclick="openStory('main-lead')">Read Full Coverage</button>
+        </div>
+      </article>
+
+      <!-- Column 2: Secondary Detailed Stories -->
+      <section class="secondary-column">
+        
+        <article class="story-card">
+          <span class="category-tag">Emergency Logistics</span>
+          <a href="#">
+            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" alt="TTT CARE Emergency Rapid Care">
+          </a>
+          <h3><a href="#">Rapid Emergency Response Operations Expanded for High-Priority Cases</a></h3>
+          <p>Integrating real-time digital dispatch with certified medical caregivers ensures senior citizens receive immediate medical oversight and targeted home aid during critical welfare alerts.</p>
+          <div class="meta-info" style="margin-top: 8px;">3 Min Read • Emergency Care Unit</div>
+        </article>
+
+        <article class="story-card">
+          <span class="category-tag">Community Welfare</span>
+          <h3><a href="#">Volunteer Networks Scale Operations to Support Isolation and Rehabilitation</a></h3>
+          <p>Local teams across international hubs are actively mobilizing to provide regular health monitoring, social companionship, and necessary daily logistics to homebound citizens.</p>
+          <div class="meta-info" style="margin-top: 8px;">Updated 1 Hour Ago • Social Impact Desk</div>
+        </article>
+
+      </section>
+
+      <!-- Column 3: Editorials & Live Briefs -->
+      <aside class="sidebar-column">
+        
+        <div>
+          <h3 class="section-title">Care Insights</h3>
+          
+          <article class="opinion-item">
+            <span class="author-title">TTT CARE Medical Board</span>
+            <h4><a href="#">The Value of Empathy in Modern Senior Home Care</a></h4>
+            <p>Why combining medical rigor with human compassion remains the gold standard for elderly rehabilitation.</p>
+          </article>
+
+          <article class="opinion-item">
+            <span class="author-title">Technical Operations</span>
+            <h4><a href="#">How Responsive Portals Streamline Appointments</a></h4>
+            <p>Leveraging open-source web platforms to connect families with verified caregivers instantaneously.</p>
+          </article>
+
+          <article class="opinion-item">
+            <span class="author-title">Humanitarian Chair</span>
+            <h4><a href="#">Building Sustainable Communities for Sick Groups</a></h4>
+            <p>Establishing localized care hubs that guarantee long-term medical and emotional assistance.</p>
+          </article>
+        </div>
+
+        <div>
+          <h3 class="section-title">Live Briefings</h3>
+          <article class="opinion-item">
+            <span class="author-title" id="brief-timestamp">GLOBAL HUB</span>
+            <h4 id="brief-content">TTT CARE operational servers active. Ready to process urgent assistance requests worldwide.</h4>
+            <button class="btn-action" style="padding: 4px 8px; font-size: 10px;" onclick="refreshBriefing()">Refresh Update</button>
+          </article>
+        </div>
+
+      </aside>
+
+    </main>
+
+  </div>
+
+  <!-- JavaScript Functionalities -->
+  <script>
+    function openStory(storyId) {
+      alert("Opening complete article details for TTT CARE...");
+    }
+
+    function refreshBriefing() {
+      const updates = [
+        "New volunteer orientation initiatives deployed across major care hubs.",
+        "Emergency hotline capacities upgraded to handle critical priority requests.",
+        "TTT CARE welfare teams actively distributing medical supplies to households.",
+        "Digital portal update complete: Improved appointment scheduling efficiency."
+      ];
+      
+      const randomIndex = Math.floor(Math.random() * updates.length);
+      document.getElementById('brief-content').innerText = updates[randomIndex];
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      document.getElementById('brief-timestamp').innerText = "LIVE AT " + timeStr;
+    });
+  </script>
+
+</body>
+</html>
