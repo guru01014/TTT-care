@@ -25,6 +25,7 @@
     }
 
     .container {
+      width: 100%;
       max-width: 1240px;
       margin: 0 auto;
       padding: 0 20px;
@@ -40,6 +41,12 @@
       color: #a00000;
     }
 
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
     /* Newspaper Header Bar */
     .paper-header {
       text-align: center;
@@ -51,8 +58,11 @@
     .top-utility {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
       border-bottom: 1px solid #dddddd;
-      padding-bottom: 6px;
+      padding-bottom: 8px;
       margin-bottom: 15px;
       font-size: 12px;
       font-weight: 500;
@@ -67,7 +77,7 @@
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -1px;
-      line-height: 1;
+      line-height: 1.1;
       margin-bottom: 6px;
     }
 
@@ -78,7 +88,7 @@
       color: #444444;
     }
 
-    /* 3-Column Content Layout */
+    /* Responsive 3-Column Desktop Layout */
     .news-grid {
       display: grid;
       grid-template-columns: 2.2fr 1.2fr 1fr;
@@ -244,19 +254,94 @@
       background-color: #a00000;
     }
 
-    /* Responsive Queries */
-    @media (max-width: 992px) {
+    /* ========================================================= */
+    /* RESPONSIVE MEDIA QUERIES (Tablet & Mobile Adaptations)    */
+    /* ========================================================= */
+
+    /* Tablet Devices (Up to 992px) */
+    @media screen and (max-width: 992px) {
+      .paper-title {
+        font-size: 44px;
+      }
+
       .news-grid {
         grid-template-columns: 1fr;
+        gap: 35px;
       }
+
       .lead-column, .secondary-column {
         border-right: none;
         padding-right: 0;
-        border-bottom: 1px solid #111111;
-        padding-bottom: 25px;
+        border-bottom: 1px solid #dddddd;
+        padding-bottom: 30px;
       }
+
+      .lead-story img {
+        height: 320px;
+      }
+
+      .secondary-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .story-card {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+    }
+
+    /* Mobile Devices (Up to 600px) */
+    @media screen and (max-width: 600px) {
+      .container {
+        padding: 0 15px;
+      }
+
+      .top-utility {
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        gap: 5px;
+      }
+
       .paper-title {
-        font-size: 40px;
+        font-size: 32px;
+      }
+
+      .paper-tagline {
+        font-size: 13px;
+      }
+
+      .lead-story img {
+        height: 220px;
+      }
+
+      .lead-story h2 {
+        font-size: 24px;
+      }
+
+      .lead-story p {
+        font-size: 14px;
+      }
+
+      .secondary-column {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .story-card img {
+        height: 200px;
+      }
+
+      .story-card h3 {
+        font-size: 18px;
+      }
+
+      .btn-action {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
       }
     }
   </style>
