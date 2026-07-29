@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TTT CARE | Our Leadership & Team</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons for Social Media -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #fcfcfc;
+      font-family: 'Roboto', sans-serif;
+      color: #111111;
+      line-height: 1.6;
+      padding: 40px 0;
+    }
+
+    .team-container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Section Header */
+    .team-header {
+      text-align: center;
+      margin-bottom: 50px;
+      border-bottom: 4px double #111111;
+      padding-bottom: 20px;
+    }
+
+    .team-header .sub-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #a00000;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .team-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 42px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .team-header p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 15px;
+      color: #555555;
+    }
+
+    /* Team Grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    /* Team Card */
+    .team-card {
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      padding-bottom: 20px;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    .team-img-wrapper {
+      width: 100%;
+      height: 260px;
+      overflow: hidden;
+      position: relative;
+      background-color: #f0f0f0;
+    }
+
+    .team-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .team-card:hover .team-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .team-info {
+      padding: 20px 15px 10px 15px;
+    }
+
+    .member-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #111111;
+    }
+
+    .member-role {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #a00000;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .member-bio {
+      font-size: 13px;
+      color: #666666;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    /* Social Links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: #f4f4f4;
+      color: #333333;
+      border-radius: 50%;
+      font-size: 13px;
+      text-decoration: none;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: #111111;
+      color: #ffffff;
+    }
+
+    /* Responsive Queries */
+    @media screen and (max-width: 1024px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .team-header h2 {
+        font-size: 32px;
+      }
+
+      .team-img-wrapper {
+        height: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="team-container">
+    
+    <!-- Section Header -->
+    <header class="team-header">
+      <span class="sub-title">Dedicated Professionals</span>
+      <h2>Our Leadership & Team</h2>
+      <p>The compassionate healthcare specialists, technical leads, and logistics experts behind TTT CARE's international welfare infrastructure.</p>
+    </header>
+
+    <!-- Team Members Grid -->
+    <div class="team-grid">
+
+      <!-- Member 1: Leadership -->
+      <article class="team-card">
+        <div class="team-img-wrapper">
+          <img src="./Picture/Tisan.png" alt="Executive Director">
+        </div>
+        <div class="team-info">
+          <h3 class="member-name">Tisan Faroque</h3>
+          <span class="member-role">Founder & Executive Director</span>
+          <p class="member-bio">Leading global welfare initiatives and spearheading TTT CARE's operational expansion worldwide.</p>
+          <ul class="social-links">
+            <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Member 2: Medical Board -->
+      <article class="team-card">
+        <div class="team-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80" alt="Chief Medical Officer">
+        </div>
+        <div class="team-info">
+          <h3 class="member-name">Dr. Elena Rostova</h3>
+          <span class="member-role">Chief Medical Officer</span>
+          <p class="member-bio">Overseeing healthcare quality protocols, senior medical aid, and emergency response frameworks.</p>
+          <ul class="social-links">
+            <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Member 3: Technology -->
+      <article class="team-card">
+        <div class="team-img-wrapper">
+          <img src="./Picture/Hamim.png" alt="Lead Systems Developer">
+        </div>
+        <div class="team-info">
+          <h3 class="member-name">Md Khayrl Basar Hamim</h3>
+          <span class="member-role">Head of Technical Architecture</span>
+          <p class="member-bio">Architecting real-time care coordination platforms and web logistics for humanitarian dispatch.</p>
+          <ul class="social-links">
+            <li><a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+            <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Member 4: Field Operations -->
+      <article class="team-card">
+        <div class="team-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Operations Director">
+        </div>
+        <div class="team-info">
+          <h3 class="member-name">Marcus Vance</h3>
+          <span class="member-role">Head of Field Operations</span>
+          <p class="member-bio">Managing volunteer networks, emergency home assistance teams, and direct community support hubs.</p>
+          <ul class="social-links">
+            <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+  <!-- Dynamic Interaction Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Log interaction for demonstration
+      const teamCards = document.querySelectorAll('.team-card');
+      teamCards.forEach(card => {
+        card.addEventListener('click', function() {
+          const name = this.querySelector('.member-name').innerText;
+          console.log("Selected team profile: " + name);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
