@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Care Plan - TTT CARE</title>
+    <style>
+        /* Base Styles & Variables */
+        :root {
+            --primary-color: #0d9488; /* Teal theme for Custom Plan */
+            --primary-hover: #0f766e;
+            --dark-color: #0f172a;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border-color: #cbd5e1;
+            --success-color: #16a34a;
+            --accent-badge: #ccfbf1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header-section h1 {
+            font-size: 32px;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .header-section p {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        /* Main Plan Card Layout */
+        .plan-card-wrapper {
+            background: var(--white);
+            border: 2px solid var(--primary-color);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px -5px rgba(13, 148, 136, 0.15);
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .plan-image-box {
+            flex: 1 1 350px;
+            background: #e2e8f0;
+            position: relative;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plan-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .upload-btn {
+            position: absolute;
+            bottom: 15px;
+            background: rgba(15, 23, 42, 0.75);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+        }
+
+        .plan-details {
+            flex: 1 1 400px;
+            padding: 40px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-badge);
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 12px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .plan-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .price-box {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .price-box span {
+            font-size: 16px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .plan-description {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            margin-bottom: 12px;
+            color: #334155;
+        }
+
+        .feature-item .check {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .btn-action {
+            display: block;
+            width: 100%;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-action:hover {
+            background-color: var(--primary-hover);
+        }
+
+        @media (max-width: 600px) {
+            .plan-details {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header-section">
+            <h1>TTT CARE - Care Plans</h1>
+            <p>Design a fully personalized care program suited specifically for your loved one's unique requirements.</p>
+        </div>
+
+        <!-- Custom Plan Card -->
+        <div class="plan-card-wrapper">
+            <!-- Left Side Image -->
+            <div class="plan-image-box">
+                <img id="planImage" src="./Picture/1.png" alt="Custom Care Plan">
+                <label class="upload-btn" for="imageInput">Change Image</label>
+                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+            </div>
+
+            <!-- Right Side Details -->
+            <div class="plan-details">
+                <span class="badge">Flexible • Custom Plan</span>
+                <h2 class="plan-title">Tailored Care Solution</h2>
+                
+                <div class="price-box">
+                    <span>Custom Quote / Flexible Pricing</span>
+                </div>
+
+                <p class="plan-description">
+                    Build a hybrid care package where you choose specific hours, specialized medical tasks, or personal assistance schedules.
+                </p>
+
+                <ul class="feature-list">
+                    <li class="feature-item"><span class="check">✓</span> Flexible daily or hourly caregiver scheduling</li>
+                    <li class="feature-item"><span class="check">✓</span> Customizable personal care & mobility options</li>
+                    <li class="feature-item"><span class="check">✓</span> Specialized nursing or therapy add-ons</li>
+                    <li class="feature-item"><span class="check">✓</span> Choice of medical & appointment transport frequency</li>
+                    <li class="feature-item"><span class="check">✓</span> Personalized family updates & assessment calls</li>
+                </ul>
+
+                <button class="btn-action" onclick="requestQuote()">Request a Custom Quote</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dynamic Image Upload Preview
+        const imageInput = document.getElementById('imageInput');
+        const planImage = document.getElementById('planImage');
+
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    planImage.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Booking Button Click Handler
+        function requestQuote() {
+            alert('Thank you for reaching out! Our team will contact you to perform a personalized care assessment and provide a custom quote.');
+        }
+    </script>
+</body>
+</html>

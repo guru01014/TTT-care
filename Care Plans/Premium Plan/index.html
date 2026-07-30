@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Care Plan - TTT CARE</title>
+    <style>
+        /* Base Styles & Variables */
+        :root {
+            --primary-color: #0f172a;
+            --accent-gold: #d97706;
+            --accent-bg: #fffbeb;
+            --dark-color: #0f172a;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border-color: #fef3c7;
+            --success-color: #16a34a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header-section h1 {
+            font-size: 32px;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .header-section p {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        /* Billing Toggle */
+        .billing-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--accent-gold);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+
+        /* Main Plan Card Layout */
+        .plan-card-wrapper {
+            background: var(--white);
+            border: 2px solid var(--accent-gold);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px -5px rgba(217, 119, 6, 0.2);
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .plan-image-box {
+            flex: 1 1 350px;
+            background: #e2e8f0;
+            position: relative;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plan-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .upload-btn {
+            position: absolute;
+            bottom: 15px;
+            background: rgba(15, 23, 42, 0.85);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+        }
+
+        .plan-details {
+            flex: 1 1 400px;
+            padding: 40px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-bg);
+            color: var(--accent-gold);
+            border: 1px solid #fcd34d;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .plan-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .price-box {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .price-box span {
+            font-size: 16px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .plan-description {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            margin-bottom: 12px;
+            color: #334155;
+        }
+
+        .feature-item .check {
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        .btn-action {
+            display: block;
+            width: 100%;
+            background-color: var(--dark-color);
+            color: var(--white);
+            text-align: center;
+            padding: 14px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-action:hover {
+            background-color: var(--accent-gold);
+            color: var(--white);
+        }
+
+        @media (max-width: 600px) {
+            .plan-details {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header-section">
+            <h1>TTT CARE - Care Plans</h1>
+            <p>Exclusive, round-the-clock specialized care tailored for complete peace of mind.</p>
+            
+            <!-- Monthly / Yearly Toggle -->
+            <div class="billing-toggle">
+                <span>Monthly</span>
+                <label class="switch">
+                    <input type="checkbox" id="billingToggle">
+                    <span class="slider"></span>
+                </label>
+                <span>Yearly (Save 20%)</span>
+            </div>
+        </div>
+
+        <!-- Premium Plan Card -->
+        <div class="plan-card-wrapper">
+            <!-- Left Side Image -->
+            <div class="plan-image-box">
+                <img id="planImage" src="./Picture/1.png" alt="Premium Care Plan">
+                <label class="upload-btn" for="imageInput">Change Image</label>
+                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+            </div>
+
+            <!-- Right Side Details -->
+            <div class="plan-details">
+                <span class="badge">★ All-Inclusive • Premium Plan</span>
+                <h2 class="plan-title">24/7 Dedicated Care</h2>
+                
+                <div class="price-box">
+                    <span id="currency">$</span><span id="priceAmount">399</span> <span id="period">/ month</span>
+                </div>
+
+                <p class="plan-description">
+                    Full-time specialized care designed for individuals requiring continuous medical oversight, personal assistance, and rapid response services.
+                </p>
+
+                <ul class="feature-list">
+                    <li class="feature-item"><span class="check">✓</span> 24/7 live-in or dedicated nurse assistance</li>
+                    <li class="feature-item"><span class="check">✓</span> Specialized medical & physical therapy support</li>
+                    <li class="feature-item"><span class="check">✓</span> Complete meal preparation & tailored nutrition plans</li>
+                    <li class="feature-item"><span class="check">✓</span> VIP medical transportation & companion service</li>
+                    <li class="feature-item"><span class="check">✓</span> Direct doctor consultation coordination</li>
+                    <li class="feature-item"><span class="check">✓</span> Daily real-time health updates for family members</li>
+                </ul>
+
+                <button class="btn-action" onclick="selectPlan()">Get Premium Care</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Pricing Toggle Logic
+        const billingToggle = document.getElementById('billingToggle');
+        const priceAmount = document.getElementById('priceAmount');
+        const period = document.getElementById('period');
+
+        const monthlyPrice = 399;
+        const yearlyPrice = Math.round(399 * 12 * 0.8); // 20% Discount
+
+        billingToggle.addEventListener('change', function() {
+            if (this.checked) {
+                priceAmount.textContent = yearlyPrice;
+                period.textContent = '/ year';
+            } else {
+                priceAmount.textContent = monthlyPrice;
+                period.textContent = '/ month';
+            }
+        });
+
+        // Dynamic Image Upload Preview
+        const imageInput = document.getElementById('imageInput');
+        const planImage = document.getElementById('planImage');
+
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    planImage.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Booking Button Click Handler
+        function selectPlan() {
+            alert('Your booking request for the Premium Care Plan has been submitted successfully! Our care coordinator will contact you immediately.');
+        }
+    </script>
+</body>
+</html>
